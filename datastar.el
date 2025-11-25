@@ -1,4 +1,4 @@
-;;; datastar.el --- A minor mode for datastar.js projects  -*- lexical-binding: t; -*-
+;;; datastar.el --- A minor mode for datastar projects  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2024 Your Name
 
@@ -6,12 +6,13 @@
 ;; Version: 0.1
 ;; Keywords: datastar, web, javascript, html
 ;; Package-Requires: ((emacs "26.1"))
-;; URL:
+;; URL: https://github.com/benjamin-asdf/datastar-el
 
 ;;; Commentary:
 
-;; This package provides a minor mode for working with datastar.js projects.
-;; It provides completion for datastar attributes in html and clojure files.
+;; This package provides a minor mode for working with datastar projects.
+;; It provides completion for datastar attributes.
+;; See the Readme provided with the source code of this package.
 
 ;;; Code:
 
