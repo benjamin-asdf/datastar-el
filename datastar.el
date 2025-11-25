@@ -23,6 +23,7 @@
 
 (defun datastar--fetch-data ()
   "Fetch the datastar data from the web."
+  (message "datastar--fetch-data: fetch datastar data")
   (let ((url "https://raw.githubusercontent.com/starfederation/datastar/refs/heads/develop/tools/vscode-extension/src/data-attributes.json")
         (json-object-type 'hash-table)
         (json-array-type 'list))
@@ -45,18 +46,12 @@
 
 (defun datastar-completion-at-point ()
   "Provide completion for datastar attributes."
-  (when ;; whatever, I want to just check if it says data-
-      (re-search-backward
-       "data-"
-       nil
-       t)
+  (when (re-search-backward "data-" nil t)
     (let* ((bounds (bounds-of-thing-at-point
                     'symbol))
-           (prefix (if bounds
-                       (buffer-substring-no-properties
-                        (car bounds)
-                        (cdr bounds))
-                     ""))
+           (prefix (buffer-substring-no-properties
+                    (car bounds)
+                    (cdr bounds)))
            (completions '()))
       (maphash
        (lambda (key value)

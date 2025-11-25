@@ -13,13 +13,21 @@ Based on the datastar [vscode extension](https://marketplace.visualstudio.com/it
 
 ## Installation
 
-You can install this package from MELPA:
+By cloning this repository and adding it to your load-path.
 
 ```
-M-x package-install RET datastar RET
+(add-to-list 'load-path "<path>/datastar.el/")
+(require 'datastar "datastar.el")
 ```
 
-Or by cloning this repository and adding it to your load-path.
+or
+
+```
+(require 'datastar "<path>/datastar.el/datastar.el")
+```
+
+
+TODO: insert the default doom / use-package snippet here.
 
 ## Configuration with .dir-locals.el
 
