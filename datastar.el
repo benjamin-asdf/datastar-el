@@ -147,16 +147,15 @@
             (let ((references (gethash "references" entry)))
               (when references
                 (insert "\n\nReferences:\n")
-                (let ((references my-references))
-                  (dolist (ref
-                           (mapcar #'identity references))
-                    (let ((name (gethash "name" ref))
-                          (url (gethash "url" ref)))
-                      (insert (format "- %s: " name))
-                      (insert-button
-                       url
-                       `(browse-url ,url))
-                      (insert "\n"))))))))))))
+                (dolist (ref
+                         (mapcar #'identity references))
+                  (let ((name (gethash "name" ref))
+                        (url (gethash "url" ref)))
+                    (insert (format "- %s: " name))
+                    (insert-button
+                     url
+                     `(browse-url ,url))
+                    (insert "\n")))))))))))
 
 (defun datastar-marginalia-annotator (candidate)
   "Annotate datastar completions with marginalia."
