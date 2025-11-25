@@ -6,7 +6,7 @@ This package provides completion for datastar attributes in html and clojure fil
 
 Based on the datastar [vscode extension](https://marketplace.visualstudio.com/items?itemName=starfederation.datastar-vscode).
 
-Expectation is feature parity with the vscode extension.
+The goal is feature parity with the vscode extension.
 
 # Features
 
