@@ -1,7 +1,5 @@
 ;;; datastar.el --- A minor mode for datastar projects  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024 Your Name
-
 ;; Author: Benjamin Janos Schwerdner <Benjamin.Schwerdtner@gmail.com>
 ;; Version: 0.1
 ;; Keywords: datastar, web, javascript, html
