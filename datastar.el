@@ -133,6 +133,13 @@
         (when entry
           (with-help-window
               "*datastar-help*"
+            (insert
+             (propertize (gethash "prefix" entry)
+                         'face '(:height 1.5 :weight bold)))
+            (newline)
+            (newline)
+            (insert "body: " (gethash "body" entry))
+            (newline)
             (insert "Description:\n")
             (insert
              (gethash "description" entry))
