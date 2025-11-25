@@ -8,8 +8,8 @@ Based on the datastar [vscode extension](https://marketplace.visualstudio.com/it
 
 # Features
 
-- auto complete for `data-` attributes.
-- help buffer for each `data-` attribute with documenntion link. 
+- `completion-at-point-functions` function for `data-` attributes (looks at the prefix 'data-').
+- `datastar-attribute-help`: help buffer for each `data-` attribute with documentation link.
 
 ## Installation
 
@@ -46,12 +46,10 @@ Here is an example that enables `datastar-mode` for HTML, web, Clojure, and Cloj
 
 When you open a file in this directory, Emacs will ask for your confirmation to apply these settings. This is a security measure to ensure you only run trusted code.
 
-## Completion
-
-The package provides completion for datastar attributes. The completion is triggered automatically when you are inside an HTML tag or a Clojure keyword.
-
-You can also manually trigger the completion by using the `datastar-complete` command.
 
 ## Documentation
 
 You can view the documentation for a datastar attribute by using the `datastar-attribute-help` command. This command will prompt you for a datastar attribute and then display the documentation for it in a help buffer.
+
+When hovering on a data attribute, it uses that instead of asking for one.
+
