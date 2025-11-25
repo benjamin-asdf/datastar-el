@@ -1,6 +1,6 @@
 # datastar.el
 
-A minor mode for [datastar.js](https://data-star.dev/) projects.
+A minor mode for [datastar](https://data-star.dev/) projects.
 
 This package provides completion for datastar attributes in html and clojure files.
 
