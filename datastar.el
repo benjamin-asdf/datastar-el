@@ -46,46 +46,45 @@
 (defun datastar-completion-at-point ()
   "Provide completion for datastar attributes."
   (when (re-search-backward "data-" nil t)
-    (let* ((bounds (bounds-of-thing-at-point
-                    'symbol))
-           (prefix (buffer-substring-no-properties
-                    (car bounds)
-                    (cdr bounds)))
-           (completions '()))
-      (maphash
-       (lambda (key value)
-         (let ((completion-prefix (gethash "prefix" value)))
-           (when (string-prefix-p
-                  prefix
-                  completion-prefix)
-             (let* ((body (gethash "body" value))
-                    (description (gethash "description" value))
-                    (annotation (when (require 'marginalia nil t)
-                                  (datastar-marginalia-annotator
-                                   completion-prefix)))
-                    (metadata `((display . ,(propertize
-                                             completion-prefix
-                                             'face
-                                             'font-lock-keyword-face))
-                                (annotation-function . (lambda (cand) ,annotation))
-                                (help-echo . ,description))))
-               (push
-                (propertize
-                 completion-prefix
-                 'completion-metadata
-                 metadata
-                 'completion-extra-properties
-                 `(:datastar-body . ,body))
-                completions)))))
-       (datastar-data))
-      (when completions
-        (list
-         (car bounds)
-         (cdr bounds)
-         completions
-         (completion-table-dynamic
-          (lambda (_) completions))
-         :exclusive 'no)))))
+    (when-let* ((bounds (bounds-of-thing-at-point 'symbol)))
+      (let* ((prefix (buffer-substring-no-properties
+                      (car bounds)
+                      (cdr bounds)))
+             (completions '()))
+        (maphash
+         (lambda (key value)
+           (let ((completion-prefix (gethash "prefix" value)))
+             (when (string-prefix-p
+                    prefix
+                    completion-prefix)
+               (let* ((body (gethash "body" value))
+                      (description (gethash "description" value))
+                      (annotation (when (require 'marginalia nil t)
+                                    (datastar-marginalia-annotator
+                                     completion-prefix)))
+                      (metadata `((display . ,(propertize
+                                               completion-prefix
+                                               'face
+                                               'font-lock-keyword-face))
+                                  (annotation-function . (lambda (cand) ,annotation))
+                                  (help-echo . ,description))))
+                 (push
+                  (propertize
+                   completion-prefix
+                   'completion-metadata
+                   metadata
+                   'completion-extra-properties
+                   `(:datastar-body . ,body))
+                  completions)))))
+         (datastar-data))
+        (when completions
+          (list
+           (car bounds)
+           (cdr bounds)
+           completions
+           (completion-table-dynamic
+            (lambda (_) completions))
+           :exclusive 'no))))))
 
 (defun datastar-complete ()
   "Manually trigger datastar completion."
